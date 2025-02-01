@@ -1,0 +1,41 @@
+
+<body>
+    <h1>Angular Todo List</h1>
+    <div class="todo-container">
+        <div class="card custom-card">
+          <div class="card-header custom-header">
+            <h3>Todo List</h3>
+          </div>
+          <div class="card-body custom-body">
+            <div class="input-group mb-3 custom-input-group">
+              <input
+                type="text"
+                class="form-control custom-input"
+                placeholder="Add a new task"
+                [(ngModel)]="newTodo"
+                (keyup.enter)="addTodo()"
+              />
+              <button class="btn btn-primary custom-add-btn" (click)="addTodo()">
+                Add
+              </button>
+            </div>
+            <ul class="list-group custom-list">
+              @for(todo of todos; track $index) {
+                <li class="list-group-item custom-list-item d-flex justify-content-between align-items-center">
+                  <span class="todo-text">{{ todo }}</span>
+                  <button class="btn btn-danger btn-sm custom-delete-btn" (click)="deleteTodo($index)">
+                    Delete
+                  </button>
+                </li>
+              }
+              @empty {
+                <li class="list-group-item text-center empty-message">
+                  No tasks yet. Add a new task to get started!
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+</body>
